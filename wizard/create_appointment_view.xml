@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="create_appointment_form" model="ir.ui.view">
+        <field name="name">create appointment.form</field>
+        <field name="model">create.appointment</field>
+        <field name="arch" type="xml">
+            <form string="create new appointment">
+                <group>
+                    <field name="name"/>
+                    <field name="patient"/>
+                </group>
+                <footer>
+                    <button string="create" type="object" class="btn-secondary" name="create_appointment_action"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="create_appointment_action" model="ir.actions.act_window">
+        <field name="name">Create appointment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.appointment</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_appointment_form"/>
+        <field name="target">new</field>
+        <field name="context">{
+            'dialog_size' : 'medium',
+            }
+        </field>
+    </record>
+</odoo>

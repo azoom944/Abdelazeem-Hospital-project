@@ -1,0 +1,78 @@
+<odoo>
+    <data>
+        <template id="hms_patient_templet">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                       <div style="float: left;margin-right:700px ">
+                           <h style="text-align:left">
+                               <font color="red" size="6">Patient Status Report</font>
+                           </h>
+                           <table>
+                           <tr>
+                               <td><b> Name :</b></td>
+                               <td><span t-field="o.first_name"/> <span t-field="o.last_name"/> </td>
+                           </tr>
+                           <tr>
+                               <td><b> Age :</b></td>
+                               <td><span t-field="o.age"/></td>
+                           </tr>
+                           <tr>
+                               <td><b> Department :</b></td>
+                               <td><span t-field="o.department_id"/></td>
+                           </tr>
+                           <tr>
+                               <td><b> Doctors :</b></td>
+                               <td><span t-field="o.doctor_id"/></td>
+                           </tr>
+                        </table>
+                       </div>
+                       <div style="float: left">
+                       <span t-field="o.image" />
+                           <table>
+                            <tr>
+                               <td><b> Birth date :</b></td>
+                               <td><span t-field="o.birth_date"/></td>
+                           </tr>
+                           <tr>
+                               <td><b> Pcr :</b></td>
+                               <td><span t-field="o.pcr_check"/></td>
+                           </tr>
+                           <tr>
+                               <td><b> Blood Type :</b></td>
+                               <td><span t-field="o.blood_type"/></td>
+                           </tr>
+                           <tr>
+                               <td><b> Email :</b></td>
+                               <td><span t-field="o.email"/></td>
+                           </tr>
+                        </table>
+                       </div>
+                       <div class="mx-auto" style="width: 200px;">
+                              <h6><font color="red">Log History</font></h6>
+                       </div>
+                       <div class="space">
+                        <table class="table table-bordered table-striped center" >
+                            <tr class="table-primary">
+                                <td>User</td>
+                                <td>Date</td>
+                                <td>Info</td>
+                            </tr>
+                            <tr >
+                                <td><span t-field="o.created_by"/></td>
+                                <td><span t-field="o.created_date"/> </td>
+                                <td><span t-field="o.describtion"/> </td>
+                            </tr>
+                            <tr>
+                                <td><span t-field="o.created_by"/></td>
+                                <td><span t-field="o.created_date"/> </td>
+                                <td><span t-field="o.describtion"/> </td>
+                            </tr>
+                        </table>
+                       </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

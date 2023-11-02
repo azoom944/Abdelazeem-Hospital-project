@@ -1,0 +1,1 @@
+from . import patient, department, doctors, crm_inherit

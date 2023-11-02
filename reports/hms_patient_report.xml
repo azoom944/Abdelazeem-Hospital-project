@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+        <report id="hms_patient_report"
+                 string="Abdelazeem Hospital Patients"
+                 name="hms.hms_patient_templet"
+                 model="hms.patient"
+                 report_type="qweb-html"/>
+    </data>
+</odoo>

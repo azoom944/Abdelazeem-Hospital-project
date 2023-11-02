@@ -1,0 +1,88 @@
+<odoo>
+    <data>
+
+       <record id="hms_patient_action" model="ir.actions.act_window">
+           <field name="name">Patient</field>
+           <field name="res_model">hms.patient</field>
+       </record>
+
+
+        <menuitem id="hms_root" name="HMS"/>
+        <menuitem id="patient_menu" name="Patient" parent="hms_root"
+                  action="hms_patient_action"/>
+         <menuitem id="appointment_action" name="appointment" parent="hms_root"
+                  action="create_appointment_action"/>
+
+        <record id="hms_patient_tree_view" model="ir.ui.view">
+            <field name="name">Patient tree view</field>
+            <field name="model">hms.patient</field>
+            <field name="arch" type="xml">
+                <tree>
+                   <field name="first_name"/>
+                   <field name="last_name"/>
+                   <field name="birth_date"/>
+                   <field name="history"/>
+                   <field name="cr_ratio"/>
+                   <field name="blood_type"/>
+                   <field name="pcr_check"/>
+                   <field name="image"/>
+                   <field name="adress"/>
+                   <field name="age"/>
+                   <field name="department_id"/>
+                </tree>
+            </field>
+        </record>
+
+         <record id="hms_patient_form_view" model="ir.ui.view">
+            <field name="name">Patient form view</field>
+            <field name="model">hms.patient</field>
+            <field name="arch" type="xml">
+              <form>
+                <header>
+                        <button srting="Undetermined case" type="object" name="first_case" />
+                        <button string="Good case" type="object" name="second_case"/>
+                        <button string="fair case" type="object" name="third_case"/>
+                        <button string="serious case" type="object" name="fourth_case"/>
+                </header>
+                <sheet>
+                  <group>
+                    <group>
+                      <field name="first_name" required="1" />
+                      <field name="last_name" required="1" />
+                      <field name="email"/>
+                      <field name="birth_date"/>
+                      <field name="states"/>
+                      <field name="pcr_check"/>
+                    </group>
+                    <group>
+                      <field name="cr_ratio" attrs="{'required': [('pcr_check', '!=', False)]}"/>
+                      <field name="blood_type"/>
+                      <field name="age"/>
+                      <field name="image" widget="image" class="oe_avatar"/>
+                      <field name="department_id" domain="[('is_opend', '=', 'true' )]"/>
+                      <field name="department_capacity"/>
+                      <field name="doctor_id" widget="many2many_tags" groups="hms.hms_manager_group"/>
+                    </group>
+                  </group>
+                    <notebook>
+                        <page string="Log_history">
+                          <group>
+                            <field name="created_by"/>
+                            <field name="created_date"/>
+                            <field name="describtion" />
+                          </group>
+                        </page>
+
+                        <page string="history">
+                         <field name="history" attrs="{'invisible':[('age','&lt;','50')]}"/>
+                       </page>
+                       <page string="adress">
+                         <field name="adress"/>
+                       </page>
+                    </notebook>
+                </sheet>
+              </form>
+            </field>
+         </record>
+    </data>
+</odoo>
